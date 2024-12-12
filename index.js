@@ -6,7 +6,6 @@ const Sentry = require("@sentry/node");
 
 const app = express();
 const port = 8000;
-const http = require("http");
 
 function bubble(arr) {
   //bubble sort for computation
@@ -21,11 +20,13 @@ function bubble(arr) {
   }
 }
 
-app.get("/", (req, res) => {
+app.get("/", function (req, res) {
   var arr = Array.from({ length: 40_000 }, () =>
     Math.floor(Math.random() * 4000)
   );
+  console.log("before bubble()");
   bubble(arr);
+  console.log("after bubble()");
   res.end("hiii");
 });
 
