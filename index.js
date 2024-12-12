@@ -21,12 +21,12 @@ function bubble(arr) {
   }
 }
 
-app.get("/", function rootHandler(req, res) {
+app.get("/", (req, res) => {
   var arr = Array.from({ length: 40_000 }, () =>
     Math.floor(Math.random() * 4000)
   );
   bubble(arr);
-  res.send("hiii");
+  res.end("hiii");
 });
 
 Sentry.setupExpressErrorHandler(app);
